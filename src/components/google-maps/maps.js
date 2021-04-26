@@ -1,20 +1,16 @@
-import { Loader } from "@googlemaps/js-api-loader";
+import React from 'react';
+import GoogleMapReact from 'google-map-react';
 
+const Maps = ({center, zoom, handleApiLoaded, children }) => {
 
-const loader = new Loader({
-  apiKey: "AIzaSyDfdsaAvMexdAJdlXyX-ad8UCI_q_iOJqU",
-  version: "weekly",
-});
-
-const Maps = ({mountNodeId, mapRef }) => {
-  const initMap = () => {
-    loader.load().then(() => {
-      mapRef.current = new google.maps.Map(document.getElementById(mountNodeId), {
-        center: { lat: -34.397, lng: 150.644 },
-        zoom: 8,
-      })
-    });
-  }
+  return <GoogleMapReact
+    bootstrapURLKeys={{ key: 'AIzaSyDfdsaAvMexdAJdlXyX-ad8UCI_q_iOJqU', libraries:['geometry'],}}
+    defaultCenter={center}
+    defaultZoom={zoom}
+    yesIWantToUseGoogleMapApiInternals={true}
+    onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
+  >
+  </GoogleMapReact>
 }
 
 export default Maps;
