@@ -1,17 +1,35 @@
-import { useState } from 'react';
+import React from "react";
+import {
+  Switch,
+  Route,
+  withRouter
+} from "react-router-dom";
+import { Header } from "./components";
+import ROUTES from "./utilities/routes";
 
-function App() {
+import {
+  Login,
+  Home,
+} from './views';
 
-  const [counter, setCounter ] = useState("COUNTER");
-
-
+const App = () => {
+  
   return (
-    <div className="red">
-      <p>{counter}</p>
-    
-    
-    </div>
+    <React.Fragment>
+    {/* Header Swich*/}
+    <Switch>
+      <Route exact path={ROUTES.LOGIN} render={() => null} />
+      <Route component={Header} />
+    </Switch>
+    {/* Content Swich*/}
+    <Switch>
+      <Route exact path={ROUTES.LOGIN} component={Login} />
+      <Route path={ROUTES.ROOT} component={Home} />
+    </Switch>
+  </React.Fragment>
   );
 }
 
-export default App;
+const AppWithRouter = withRouter(App)
+
+export default AppWithRouter;
