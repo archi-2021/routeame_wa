@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useState } from 'react';
 import {
   MainContainer,
   StyledInput,
   StyledButton
-} from "../../components";
+} from '../../components';
 import RikolinoVideo from '../../assets/video/rikolino.mp4';
-import { StyledForm } from "./styled";
-import { validateEmail } from "../../utilities/input-validator";
-import { Redirect } from "react-router";
-import ROUTES from "../../utilities/routes";
+import { StyledForm } from './styled';
+import { validateEmail } from '../../utilities/input-validator';
+import { Redirect } from 'react-router';
+import ROUTES from '../../utilities/routes';
+
+import { signIn } from '../../utilities/helpers/auth';
 
 const Login = () => {
   const [credentials, setCredentials] = useState({});
@@ -25,8 +27,10 @@ const Login = () => {
     e.preventDefault();
 
     if (!handleValidation()) return
+
+    signIn(credentials.email, credentials.password)
     
-    // TODO: implementar lçogica para el login.
+    // TODO: implementar lógica para el login.
     setUser(true)
   }
 
@@ -35,6 +39,8 @@ const Login = () => {
     let formIsValid = validateEmail(credentials.email)
 
     if (!formIsValid) setCredentialsErrors({ email: true })
+
+    
 
     return formIsValid;
   }
