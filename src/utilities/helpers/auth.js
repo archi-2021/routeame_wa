@@ -8,8 +8,9 @@ import {
 } from '../constants';
 
 
-export const signIn = async (user, password) => {
+export const signInWithUserAnPassword = async (user, password) => {
   const data = {} // esto tendría que ser lo que se le manda a graphql
+  return true;
   const response = await fetch(`${API_BASE_URL}${API_LOGIN_URL}`, {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
     headers: {

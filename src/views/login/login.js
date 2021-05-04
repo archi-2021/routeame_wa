@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import {
   MainContainer,
   StyledInput,
@@ -8,12 +8,11 @@ import RikolinoVideo from '../../assets/video/rikolino.mp4';
 import { StyledForm } from './styled';
 import { Redirect } from 'react-router';
 import ROUTES from '../../utilities/routes';
-
-import { signIn } from '../../utilities/helpers/auth';
+import { UserContext } from '../../providers/user-provider';
 
 const Login = () => {
   const [credentials, setCredentials] = useState({});
-  const [user, setUser] = useState(false); // Dummy user implementation, navigates if true
+  const user = useContext(UserContext)
 
   const handleInputChange = (e) => {
     let newCredentials = { ...credentials }
@@ -24,13 +23,13 @@ const Login = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    signIn(credentials.email, credentials.password)
+    //signIn(credentials.email, credentials.password)
     
     // TODO: implementar lógica para el login.
-    setUser(true)
+    user.signIn(true)
   }
 
-  if (user) return <Redirect to={ROUTES.HOME}/> // Redirects to home if there is a user logged
+  if (user.data) return <Redirect to={ROUTES.HOME}/> // Redirects to home if there is a user logged
 
   return <MainContainer centered>
     <h1>Este es un pedazo de login que mejor dicho</h1>

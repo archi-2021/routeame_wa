@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
-import { signIn } from "../utilities/helpers/auth";
+import { signInWithUserAnPassword } from "../utilities/helpers/auth";
 
 
 export const UserContext = createContext({ user: undefined });
@@ -9,6 +9,10 @@ const UserProvider = (props) => {
 
   const updateUserData = async (username, name) => {
     
+  }
+
+  const signIn = (username, password) => {
+    setUser({data: signInWithUserAnPassword(username, password)})
   }
 
   const signOut = () => {

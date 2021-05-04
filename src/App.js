@@ -20,11 +20,10 @@ const App = ({ location }) => {
   const user = useContext(UserContext)
 
   // User hasn't been retrieved from Firebase auth
-  if (user === undefined && location.pathname !== ROUTES.LOGIN) {
-    return CenteredLoader({ height: '100%' })
-  }
+  if (user === undefined) return CenteredLoader({ height: '100%' })
 
   // No user logged
+  console.log(location.pathname)
   if (user.data === undefined && location.pathname !== ROUTES.LOGIN) return <Redirect to={ROUTES.LOGIN} />
 
   return (
