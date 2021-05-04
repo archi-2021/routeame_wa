@@ -6,7 +6,6 @@ import {
 } from '../../components';
 import RikolinoVideo from '../../assets/video/rikolino.mp4';
 import { StyledForm } from './styled';
-import { validateEmail } from '../../utilities/input-validator';
 import { Redirect } from 'react-router';
 import ROUTES from '../../utilities/routes';
 
@@ -14,7 +13,6 @@ import { signIn } from '../../utilities/helpers/auth';
 
 const Login = () => {
   const [credentials, setCredentials] = useState({});
-  const [credentialsErrors, setCredentialsErrors] = useState({});
   const [user, setUser] = useState(false); // Dummy user implementation, navigates if true
 
   const handleInputChange = (e) => {
@@ -26,23 +24,10 @@ const Login = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (!handleValidation()) return
-
     signIn(credentials.email, credentials.password)
     
     // TODO: implementar lógica para el login.
     setUser(true)
-  }
-
-  const handleValidation = () => {
-    setCredentialsErrors({ email: false })
-    let formIsValid = validateEmail(credentials.email)
-
-    if (!formIsValid) setCredentialsErrors({ email: true })
-
-    
-
-    return formIsValid;
   }
 
   if (user) return <Redirect to={ROUTES.HOME}/> // Redirects to home if there is a user logged
@@ -53,7 +38,7 @@ const Login = () => {
     <StyledForm onSubmit={onSubmit}>
       <label>
         Correo electrónico:
-        <StyledInput required error={credentialsErrors.email} onChange={handleInputChange} name='email' type='text' placeholder='email' />
+        <StyledInput required onChange={handleInputChange} name='username' type='text' placeholder='Usuario' />
       </label>
       <label>
         Contraseña
