@@ -8,7 +8,7 @@ import { BrowserRouter } from "react-router-dom";
 import theme from './theme';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <React.StrictMode>  
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <App />
