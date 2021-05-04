@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { Maps, SideMenu } from '../../components';
+import { UserContext } from '../../providers/user-provider';
 import { searchRouteById } from '../../utilities/helpers/routes';
 import { searchRoute } from '../../utilities/helpers/search';
 
@@ -19,6 +20,9 @@ const Home = () => {
   const [mapsAPI, setMapsAPI] = useState(null)
 
   const abortControllerRef = useRef(null)
+  const user = useContext(UserContext)
+
+  console.log(user)
 
   /* setSearchValue
     (re)triggers a timer to requests suggestions

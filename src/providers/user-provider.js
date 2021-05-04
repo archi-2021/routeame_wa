@@ -8,11 +8,18 @@ const UserProvider = (props) => {
   const [user, setUser] = useState(undefined);
 
   const updateUserData = async (username, name) => {
-    
+
   }
 
-  const signIn = (username, password) => {
-    setUser({data: signInWithUserAnPassword(username, password)})
+  const signIn = async (username, password) => {
+    const data = await signInWithUserAnPassword(username, password)
+    console.log(data.data)
+    setUser((oldUser) => {
+      return {
+        ...oldUser,
+        ...data 
+      }
+    })
   }
 
   const signOut = () => {

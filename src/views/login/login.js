@@ -26,14 +26,13 @@ const Login = () => {
     //signIn(credentials.email, credentials.password)
     
     // TODO: implementar lógica para el login.
-    user.signIn(true)
+    user.signIn(credentials.username, credentials.password)
   }
 
   if (user.data) return <Redirect to={ROUTES.HOME}/> // Redirects to home if there is a user logged
 
   return <MainContainer centered>
-    <h1>Este es un pedazo de login que mejor dicho</h1>
-    <video autoPlay muted loop src={RikolinoVideo} type='video/mp4' />
+    <h1>Rutéame</h1>
     <StyledForm onSubmit={onSubmit}>
       <label>
         Correo electrónico:
