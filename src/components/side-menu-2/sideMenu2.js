@@ -125,11 +125,11 @@ const SideMenu2 = ({ onSearchInputChange, searchInputValue, searchResults, onRes
       <div>
         <strong>Fecha inicio</strong>
       </div>
-      <StyledSearchInput type="text"></StyledSearchInput>
+      <StyledSearchInput type="datetime-local"></StyledSearchInput>
       <div>
         <strong>Fecha final</strong>
       </div>
-      <StyledSearchInput type="text"></StyledSearchInput>
+      <StyledSearchInput type="datetime-local"></StyledSearchInput>
       <StyledButton>
         <span>Generar</span>
       </StyledButton>
