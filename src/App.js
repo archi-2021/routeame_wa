@@ -24,7 +24,7 @@ const App = ({ location }) => {
 
   // No user logged
   console.log(location.pathname)
-  if (user.data === undefined && location.pathname !== ROUTES.LOGIN) return <Redirect to={ROUTES.LOGIN} />
+  //if (user.data === undefined && location.pathname !== ROUTES.LOGIN) return <Redirect to={ROUTES.LOGIN} />
 
   return (
     <React.Fragment>

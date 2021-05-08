@@ -7,3 +7,4 @@ export { default as StyledButton } from './button';
 export { default as Loader } from './loader';
 export { CenteredLoader } from './loader';
 export { default as SideMenu } from './side-menu';
+export { default as SideMenu2 } from './side-menu-2';
