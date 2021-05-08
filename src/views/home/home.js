@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import { Maps, SideMenu } from '../../components';
+import { Maps, SideMenu2 } from '../../components';
 import { UserContext } from '../../providers/user-provider';
 import { searchRouteById } from '../../utilities/helpers/routes';
 import { searchRoute } from '../../utilities/helpers/search';
@@ -90,7 +90,7 @@ const Home = () => {
       handleApiLoaded={handleGoogleMapsApiLoaded}
     >
     </Maps>
-    <SideMenu
+    <SideMenu2
       searchInputValue={searchValue}
       onSearchInputChange={onSearchValueChange}
       searchResults={searchResult}
