@@ -22,7 +22,6 @@ const SerachResults = ({ searchResults, onResultItemClick }) => {
         <h4>{result.readableLabel}</h4>
       </SearchResultItem>
     )}
-
   </StyledSearchResultContainer>
 
 }
