@@ -5,7 +5,8 @@ import { StyledSearchInput } from '../../components';
 
 const StyledContainer = styled.div`
   
-  background-color: #01579b;
+  background-color: #00347e;
+	color: #F1FFFF;
   border-radius: 4px;
   border: 0.5px solid black;
   margin: 5px 5px;

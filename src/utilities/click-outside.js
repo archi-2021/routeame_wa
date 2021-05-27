@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 function useClickOutside(ref, handler) {
   useEffect(() => {
     function handleClickOutside(event) {
+			console.log(ref.current, "|||", event.target)
       if (ref.current && !ref.current.contains(event.target)) {
         handler();
       }

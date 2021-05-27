@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState ,useCallback} from 'react';
 import styled from 'styled-components';
 
 import { StyledSearchInput } from '../../components';
 import { ReportMenu } from './reportMenu';
 import SearchResults from './search-results/searchResults';
 import SearchStopResults from './search-results/searchStopResults';
+import useClickOutside from './../../utilities/click-outside';
 
 
 const StyledSideMenu2Container = styled.div`
@@ -24,7 +25,8 @@ const StyledSideMenu2Container = styled.div`
 
 const StyledContainer = styled.div`
   
-  background-color: #01579b;
+  background-color: #00347e;
+	color: #F1FFFF;
   border-radius: 4px;
   border: 0.5px solid black;
   margin: 5px 5px;
@@ -36,6 +38,10 @@ const StyledContainer = styled.div`
 
 
 const SideMenu2 = ({ onSearchInputChange, searchInputValue, searchResults, onResultItemClick, searchStopInputValue, onSearchStopInputChange, searchStopResult, onStopResultItemClick, selectedStop,setSearchStopResult }) => {
+	const ref = useRef();
+	const handleClickOutside = useCallback(() => setSearchStopResult(['']), [setSearchStopResult]);
+
+	useClickOutside(ref,handleClickOutside)
 	return <StyledSideMenu2Container>
 		<StyledContainer>
 			<h3>
@@ -58,6 +64,7 @@ const SideMenu2 = ({ onSearchInputChange, searchInputValue, searchResults, onRes
 			}
 			<StyledSearchInput
 				onChange={(e) => onSearchStopInputChange(e.target.value)}
+				onFocus={(e) => onSearchStopInputChange(e.target.value)}
 				value={searchStopInputValue}
 				placeholder='Busca un paradero...'
 			/>

@@ -20,24 +20,25 @@ const StyledSearchResultContainer = styled.div`
 `
 const SearchStopResults = ({ searchResults, onResultItemClick, selectedStop, setSearchStopResult }) => {
 	const slicedSearchResults = searchResults.slice(0, 9);
-	const ref = useRef()
-	const handleClickOutside = useCallback(() => setSearchStopResult(['']), [setSearchStopResult]);
-	useClickOutside(ref,handleClickOutside)
-	return <StyledSearchResultContainer ref={ref}>
+	// const ref = useRef();
+	// const handleClickOutside = useCallback(() => setSearchStopResult(['']), [setSearchStopResult]);
+
+	// useClickOutside(ref,handleClickOutside)
+	return <StyledSearchResultContainer >
 		{
-			selectedStop.cenefa_paradero ?
-				<SearchResultItem key={selectedStop.cenefa_paradero} onClick={() => onResultItemClick(selectedStop)}>
-					<i className="material-icons-round">directions_bus</i>
-					{selectedStop.nombre_paradero && <h4>{selectedStop.nombre_paradero}</h4>}
-					{selectedStop.cenefa_paradero && <h6>{selectedStop.cenefa_paradero}</h6>}
-					{selectedStop.direccion_paradero && <h6>{selectedStop.direccion_paradero}</h6>}
-				</SearchResultItem>
-				:
+			// selectedStop.cenefa_paradero ?
+			// 	<SearchResultItem key={selectedStop.cenefa_paradero} onClick={() => onResultItemClick(selectedStop)}>
+			// 		<i className="material-icons-round">directions_bus</i>
+			// 		{selectedStop.nombre_paradero && <h4>{selectedStop.nombre_paradero}</h4>}
+			// 		{selectedStop.cenefa_paradero && <h6>{selectedStop.cenefa_paradero}</h6>}
+			// 		{selectedStop.direccion_paradero && <h6>{selectedStop.direccion_paradero}</h6>}
+			// 	</SearchResultItem>
+			// 	:
 				slicedSearchResults.map((result) =>
 					<SearchResultItem key={result.cenefa_paradero} onClick={() => onResultItemClick(result)}>
+						{result.cenefa_paradero && <span>{result.cenefa_paradero}</span>}
 						<i className="material-icons-round">directions_bus</i>
 						{result.nombre_paradero && <h4>{result.nombre_paradero}</h4>}
-						{result.cenefa_paradero && <h6>{result.cenefa_paradero}</h6>}
 						{result.direccion_paradero && <h6>{result.direccion_paradero}</h6>}
 					</SearchResultItem>
 				)}

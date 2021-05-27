@@ -8,7 +8,9 @@ import { dummyJson, getReport } from './../../utilities/helpers/report';
 import { ReportMenu } from './../../components/side-menu-2/reportMenu';
 import { getStopByDetailedSearch } from './../../utilities/helpers/search';
 import { getStopByCenefa } from './../../utilities/helpers/stops'
+
 import useClickOutside from './../../utilities/click-outside';
+import BUS_STOP_ICON from '../../assets/icons';
 
 const SEARCH_DELAY = 250;
 
@@ -90,6 +92,7 @@ const Home = () => {
 	}
 
 	useEffect(() => {
+		
 		console.log(mapPolyline)
 		if (!mapPolyline) return
 
@@ -121,7 +124,8 @@ const Home = () => {
 		const routePath = new mapsAPI.Marker({
 			position: data,
 			map,
-			title: "HEYYYYYYYYYYYY"
+			title: `${selectedStop.cenefa_paradero}`,
+			icon: BUS_STOP_ICON
 		})
 
 
@@ -162,6 +166,7 @@ const Home = () => {
 		const cenefa_paradero = item.cenefa_paradero
 		const stopData = await getStopByCenefa(cenefa_paradero)
 
+		
 		setSelectedStop(item)
 		setMapGeopoint(stopData.geopoint.coordinates);
 	}
